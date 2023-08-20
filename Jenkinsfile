@@ -27,11 +27,19 @@ pipeline {
             steps {
                 script {
                     // Stop and remove any existing containers
-                    bat 'docker stop my-django-container || true'
-                    bat 'docker rm my-django-container || true'
+                    try {
+                        bat 'docker stop your-django-container'
+                    } catch (Exception e) {
+                        // Ignore error if container does not exist
+                    }
+                    try {
+                        bat 'docker rm your-django-container'
+                    } catch (Exception e) {
+                        // Ignore error if container does not exist
+                    }
 
                     // Run the Docker container
-                    bat 'docker run -d -p 8000:8000 --name my-django-container my-django-app'
+                    bat 'docker run -d -p 8000:8000 --name your-django-container your-django-image'
                 }
             }
         }
