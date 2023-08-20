@@ -31,8 +31,8 @@ pipeline {
                         bat 'dir'
                         bat 'venv/Scripts/activate'
                         bat "\"C:/Users/Atit Bimali/AppData/Local/Programs/Python/Python311/Scripts/pip.exe\" install -r requirements.txt"
-                        bat "\"C:/Users/Atit Bimali/AppData/Local/Programs/Python/Python311/Scripts/python.exe\" manage.py migrate"
-                        bat "\"C:/Users/Atit Bimali/AppData/Local/Programs/Python/Python311/Scripts/python.exe\" manage.py runserver"
+                        bat "\"C:/Users/Atit Bimali/AppData/Local/Programs/Python/Python311/python.exe\" manage.py migrate"
+                        bat "\"C:/Users/Atit Bimali/AppData/Local/Programs/Python/Python311/python.exe\" manage.py runserver"
                     }
                 }
             }
