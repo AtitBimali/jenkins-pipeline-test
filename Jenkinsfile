@@ -14,11 +14,11 @@ pipeline {
             }
         }
         
-        stage('Test') {
-            steps {
-                // Testing steps (e.g., run unit tests)
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         // Testing steps (e.g., run unit tests)
+        //     }
+        // }
         
         stage('Deploy') {
             steps {
