@@ -30,9 +30,9 @@ pipeline {
                     dir('C:/Users/Atit Bimali/Documents/DevOps Learning/jenkins-pipeline-test') { // Assuming 'jenkins-pipeline-test' is your project folder
                         bat 'dir'
                         bat 'venv/Scripts/activate'
-                        bat 'C:/Users/Atit Bimali/AppData/Local/Programs/Python/Python311/Scripts/pip.exe install -r requirements.txt'
-                        bat 'python manage.py migrate'
-                        bat 'python manage.py runserver'
+                        bat "\"C:/Users/Atit Bimali/AppData/Local/Programs/Python/Python311/Scripts/pip.exe\" install -r requirements.txt"
+                        bat "\"C:/Users/Atit Bimali/AppData/Local/Programs/Python/Python311/Scripts/python.exe\" manage.py migrate"
+                        bat "\"C:/Users/Atit Bimali/AppData/Local/Programs/Python/Python311/Scripts/python.exe\" manage.py runserver"
                     }
                 }
             }
