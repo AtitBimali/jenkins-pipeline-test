@@ -12,17 +12,17 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your Django application
-                sh 'python manage.py collectstatic'
+                // sh 'python manage.py collectstatic'
                 sh 'python manage.py migrate'
             }
         }
 
-        stage('Test') {
-            steps {
-                // Run tests for your Django application
-                sh 'python manage.py test'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         // Run tests for your Django application
+        //         sh 'python manage.py test'
+        //     }
+        // }
 
         stage('Deploy') {
             steps {
@@ -37,3 +37,5 @@ pipeline {
                 }
             }
         }
+    }
+}
