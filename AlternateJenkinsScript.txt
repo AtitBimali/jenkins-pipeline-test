@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        // ... Your other stages ...
+
+        stage('Deploy') {
+            steps {
+                script {
+                    dir('C:/Users/Atit Bimali/Documents/DevOps Learning/jenkins-pipeline-test') {
+                        bat 'dir'
+                        bat "${PYTHON_SCRIPTS}/activate"
+                        bat "${PYTHON_SCRIPTS}/pip.exe install -r requirements.txt"
+                        bat "${PYTHON_SCRIPTS}/python.exe manage.py migrate"
+                        bat "${PYTHON_SCRIPTS}/python.exe manage.py runserver"
+                    }
+                }
+            }
+        }
+    }
+}
