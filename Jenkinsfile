@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Run the Docker container
-                    bat 'docker run -d -p 8000:8000 --name your-django-container your-django-image'
+                    bat 'docker run -d -p 8000:8000 --name my-django-container my-django-app'
                 }
             }
         }
