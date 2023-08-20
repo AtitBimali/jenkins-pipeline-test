@@ -28,8 +28,8 @@ pipeline {
             steps {
                 script {
                     dir('C:/Users/Atit Bimali/Documents/DevOps Learning/jenkins-pipeline-test') { // Assuming 'jenkins-pipeline-test' is your project folder
+                        bat 'dir'
                         bat 'cd myapp'
-                        bat 'ls'
                         sh 'source venv/Scripts/activate'
                         sh 'pip install -r requirements.txt'
                         sh 'python manage.py migrate'
