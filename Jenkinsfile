@@ -28,6 +28,7 @@ pipeline {
             steps {
                 script {
                     dir('jenkins-pipeline-test') { // Assuming 'jenkins-pipeline-test' is your project folder
+                        sh 'cd myapp'
                         sh 'ls'
                         sh 'source venv/Scripts/activate'
                         sh 'pip install -r requirements.txt'
