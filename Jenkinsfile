@@ -26,9 +26,14 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Deploy your Django application (using Ansible, for example)
-                sh './deploy-script.sh'
+                script {
+                    sh "python -m venv venv" // Create a virtual environment
+                    sh "source venv/bin/activate" // Activate the virtual environment
+                    
+                    sh "pip install -r requirements.txt" // Install Django and other dependencies
+                    
+                    sh "python manage.py migrate"
+                    sh "python manage.py runserver"
+                }
             }
         }
-    }
-}
