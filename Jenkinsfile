@@ -28,6 +28,7 @@ pipeline {
             steps {
                 script {
                     dir('C:/Users/Atit Bimali/Documents/DevOps Learning/jenkins-pipeline-test') {
+                        sh 'ls'
                         sh 'source venv/Scripts/activate' // Activate the virtual environment
                         sh 'pip install -r requirements.txt' // Install dependencies
                         sh 'python manage.py migrate' // Apply migrations
