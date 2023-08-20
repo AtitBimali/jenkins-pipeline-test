@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    dir('jenkins-pipeline-test') { // Assuming 'jenkins-pipeline-test' is your project folder
+                    dir('C:/Users/Atit Bimali/Documents/DevOps Learning/jenkins-pipeline-test') { // Assuming 'jenkins-pipeline-test' is your project folder
                         bat 'cd myapp'
                         bat 'ls'
                         sh 'source venv/Scripts/activate'
