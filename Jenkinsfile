@@ -1,30 +1,37 @@
 pipeline {
     agent any
-    
-    environment {
-        WORKSPACE_DIR = "/var/jenkins/workspace/${JOB_NAME}" // Using an environment variable for the workspace path
-    }
-    
+
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-        
-        stage('Deploy') {
+
+        stage('Build and Create Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.build("my-django-app")
-                    dockerImage.inside {
-                        echo "Building docker image"
-                        // Set the working directory to the absolute path within the container
-                        def containerWorkspace = "/workspace/${JOB_NAME}/${BUILD_NUMBER}"
-                        echo "Error on variable"
-                        sh "mkdir -p ${containerWorkspace}" // Create the directory if it doesn't exist
-                        sh "python manage.py migrate"
-                        sh "python manage.py runserver 0.0.0.0:8000"
+                    dir('C:/Users/Atit Bimali/Documents/DevOps Learning/jenkins-pipeline-test') {
+                        // Build your Django application
+                        bat 'venv/Scripts/activate'
+                        bat "\"C:/Users/Atit Bimali/AppData/Local/Programs/Python/Python311/Scripts/pip.exe\" install -r requirements.txt"
+                        bat "\"C:/Users/Atit Bimali/AppData/Local/Programs/Python/Python311/python.exe\" manage.py migrate"
+                        // Build Docker image using the existing Dockerfile
+                        bat 'docker build -t my-django-app -f Dockerfile .'
                     }
+                }
+            }
+        }
+
+        stage('Deploy with Docker') {
+            steps {
+                script {
+                    // Stop and remove any existing containers
+                    bat 'docker stop my-django-container || true'
+                    bat 'docker rm my-django-container || true'
+
+                    // Run the Docker container
+                    bat 'docker run -d -p 8000:8000 --name my-django-container my-django-app'
                 }
             }
         }
