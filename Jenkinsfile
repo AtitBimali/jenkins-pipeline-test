@@ -9,13 +9,13 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                // Build your Django application
-                // sh 'python manage.py collectstatic'
-                // sh 'python manage.py migrate'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         // Build your Django application
+        //         // sh 'python manage.py collectstatic'
+        //         // sh 'python manage.py migrate'
+        //     }
+        // }
 
         // stage('Test') {
         //     steps {
