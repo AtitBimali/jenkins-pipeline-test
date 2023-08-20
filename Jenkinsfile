@@ -27,12 +27,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    dir('C:/Users/Atit Bimali/Documents/DevOps Learning/jenkins-pipeline-test') {
+                    dir('jenkins-pipeline-test') { // Assuming 'jenkins-pipeline-test' is your project folder
                         sh 'ls'
-                        sh 'source venv/Scripts/activate' // Activate the virtual environment
-                        sh 'pip install -r requirements.txt' // Install dependencies
-                        sh 'python manage.py migrate' // Apply migrations
-                        sh 'python manage.py runserver' // Run Django server
+                        sh 'source venv/Scripts/activate'
+                        sh 'pip install -r requirements.txt'
+                        sh 'python manage.py migrate'
+                        sh 'python manage.py runserver'
                     }
                 }
             }
