@@ -8,11 +8,11 @@ pipeline {
             }
         }
         
-        stage('Build') {
-            steps {
-                // Build steps (e.g., collect static files, compile assets)
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         // Build steps (e.g., collect static files, compile assets)
+        //     }
+        // }
         
         // stage('Test') {
         //     steps {
