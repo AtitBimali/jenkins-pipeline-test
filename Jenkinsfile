@@ -12,20 +12,21 @@ pipeline {
             }
         }
         
-    stage('Deploy') {
-        steps {
-            script {
-                def dockerImage = docker.build("my-django-app")
-                dockerImage.inside {
-                    // Set the working directory to the absolute path within the container
-                    def containerWorkspace = "/workspace/${JOB_NAME}/${BUILD_NUMBER}"
-                    sh "mkdir -p ${containerWorkspace}" // Create the directory if it doesn't exist
-                    sh "python manage.py migrate"
-                    sh "python manage.py runserver 0.0.0.0:8000"
+        stage('Deploy') {
+            steps {
+                script {
+                    def dockerImage = docker.build("my-django-app")
+                    dockerImage.inside {
+                        echo "Building docker image"
+                        // Set the working directory to the absolute path within the container
+                        def containerWorkspace = "/workspace/${JOB_NAME}/${BUILD_NUMBER}"
+                        echo "Error on variable"
+                        sh "mkdir -p ${containerWorkspace}" // Create the directory if it doesn't exist
+                        sh "python manage.py migrate"
+                        sh "python manage.py runserver 0.0.0.0:8000"
+                    }
                 }
             }
         }
-    }
-
     }
 }
